@@ -1,0 +1,20 @@
+---
+- name: add user
+  hosts: masters
+  vars:
+    htpasswd_file: /etc/origin/master/htpasswd
+    users:
+      - name: admin
+        password: rplinux
+      - name: rock
+        password: rplinux
+        
+  tasks:
+   - name: htpasswd
+     htpasswd:
+       path: "{{ htpasswd_file }}"
+       name: "{{ item.name }}"
+       password: "{{ item.password }}"
+     with_items:
+       - "{{ users }}"
+...
