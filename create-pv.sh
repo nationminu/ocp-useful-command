@@ -21,7 +21,9 @@ echo "{
     },
     \"persistentVolumeReclaimPolicy\": \"Recycle\"
   }
-}" | oc create -f - ;
+}" \
+| oc create -f - ;
+# | oc delete -f - ;
 
 done;
 
